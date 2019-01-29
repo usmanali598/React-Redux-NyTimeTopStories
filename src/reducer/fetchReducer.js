@@ -5,9 +5,9 @@ import
     fetchError
 } from './../action/fetchAction';
 
-export function getPosts()
+export function getPosts( api )
 {
-    const URL = 'https://api.nytimes.com/svc/topstories/v2/science.json?api-key=1AZxPAZgOh9VNSx4BnlCRIzLXxDPzgC5';
+    const URL = 'https://api.nytimes.com/svc/topstories/v2/science.json?api-key=' + api;
     return fetch( URL, { method: 'GET' } )
         .then( response => Promise.all( [ response, response.json() ] ) );
 }
@@ -17,12 +17,12 @@ export function fetchPostsWithRedux()
     return ( dispatch ) =>
     {
         dispatch( fetchRequest() );
-        return getPosts().then( ( [ response, json ] ) =>
+        return getPosts( '1AZxPAZgOh9VNSx4BnlCRIzLXxDPzgC5' ).then( ( [ response, json ] ) =>
         {
             if ( response.status === 200 )
             {
                 console.log( json, 'json here' )
-                dispatch( fetchSuccess( json.results.map( child => child) ))
+                dispatch( fetchSuccess( json.results.map( child => child ) ) )
             }
             else
             {
