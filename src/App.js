@@ -1,9 +1,19 @@
 import React, { Component } from 'react';
+import Tsting from './Tsting';
+import InnerContent from './InnerContent';
 import './index.css';
+import { Link, NavLink } from 'react-router-dom'
+
 
 class App extends Component
 {
-  state= {nam:''}
+  state= {
+    nam:'',
+    linkSelect:'',
+    titl:'',
+    date:'',
+    author:'',
+  }
   componentDidMount()
   {
     this.props.fetchPostsWithRedux();
@@ -23,6 +33,22 @@ class App extends Component
           // console.log( this.state.nam, 'fames here' )
           return this.setState({nam:fames})
   }
+    selecttFinding = e =>
+  {
+    var kames = [] 
+          
+          if(kames.length < 1){
+            kames.push(e.target)
+          } else if(kames.length > 0){
+            kames.splice(0, kames.length)
+            kames.push(e.target.innerText)
+          } else {
+            kames = ['Science']
+          }
+          console.log( this.state.linkSelect, 'kames here' )
+          return this.setState({linkSelect:kames})
+  }
+
   render()
   {
     const {posts} = this.props;
@@ -36,36 +62,17 @@ class App extends Component
         <div className="head" >  </div>
 
        <div className='content'>
-        <table >
+        <table className='list'>
           <tbody>
-            <tr  ><td className="sideRows"> Sections..</td></tr>
+            <tr><td className="sideRows"> Sections..</td></tr>
 
             { ts.map( ( name ) => <tr ><td className="sides" onClick={ this.targetFinding } >{ name }</td></tr> ) }
-
+ 
           </tbody>
         </table>
-
-        <div className="nav" >
-          <tr ><td style={ { width: '100%' } }><span style={ { fontWeight: 'bold' } }>Top Stories</span> { nam && `(${ nam[0] })` }</td></tr>
-         
-          { tsta && tsta.map( it =>
-          {
-            return (
-              <div className="NavContainer">
-                <div className="NavLeft" >
-                  { it.multimedia.filter( img => img.length > 1 ) ? <img className='smallPic' src={ it.multimedia.length > 0 ? it.multimedia[ 0 ].url : 'https://www.sjpl.org/sites/default/files/images/1718/nyt.png' } alt='pics' /> : <p>No Image..</p> }
-                  <p >{ it.updated_date }</p>
-                  <p style={ { margin: 'auto'}}>{ it.byline }</p>
-                </div>
-                <div className="NavRight" >
-                  <h1>{ it.abstract }</h1>
-                  <span><p>{ it.title }</p> <a target="_parent" href={ it.url }>Read More..</a></span>
-                  <p>{ it.des_facet.map( chk => `#${ chk }  ` ) }</p>
-                </div>
-              </div>
-            )
-          } ) }
-           </div>
+      <Link to="/tst" style={{ textDecoration: 'none', color:'black' }}>
+        <InnerContent tsta={tsta} nam={nam} posts={posts}/>
+      </Link> 
          </div>
       </div>
     )

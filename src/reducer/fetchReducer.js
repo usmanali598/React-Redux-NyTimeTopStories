@@ -21,7 +21,7 @@ export function fetchPostsWithRedux()
         {
             if ( response.status === 200 )
             {
-                console.log( json, 'json here' )
+                // console.log( json, 'json here' )
                 dispatch( fetchSuccess( json.results.map( child => child ) ) )
             }
             else
