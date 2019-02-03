@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import Tsting from './Tsting';
-import InnerContent from './InnerContent';
+import InnerContent from './components/InnerContent';
 import './index.css';
 import { Link, NavLink } from 'react-router-dom'
 
@@ -45,7 +44,7 @@ class App extends Component
           } else {
             kames = ['Science']
           }
-          console.log( this.state.linkSelect, 'kames here' )
+          // console.log( this.state.linkSelect, 'kames here' )
           return this.setState({linkSelect:kames})
   }
 
@@ -66,7 +65,7 @@ class App extends Component
           <tbody>
             <tr><td className="sideRows"> Sections..</td></tr>
 
-            { ts.map( ( name ) => <tr ><td className="sides" onClick={ this.targetFinding } >{ name }</td></tr> ) }
+            { ts.map( ( name, i ) => <tr key={i} ><td className="sides" onClick={ this.targetFinding } >{ name }</td></tr> ) }
  
           </tbody>
         </table>

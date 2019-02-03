@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import Tsting from './Tsting';
+import AnotherView from './AnotherView';
 
 class InnerContent extends Component{
     state={
@@ -11,7 +11,6 @@ class InnerContent extends Component{
         display:''
     }
   handleClick = index=>{
-    // console.log(index, 'inx here');
      this.setState((prevState, props) =>({
          inx:index,
          title:this.props.tsta[index].title,
@@ -20,7 +19,7 @@ class InnerContent extends Component{
          imgs: this.props.tsta[index].multimedia[0],
          display:'none'
      })) 
-    console.log(this.state, 'stae here');
+    // console.log(this.state, 'stae here');
      }
  render(){
      const {nam} = this.props;
@@ -31,21 +30,17 @@ class InnerContent extends Component{
      const {auth} = this.state;
      const {timing} = this.state;
      const {imgs} = this.state;
-     const {display} = this.state;
-         
-
-// console.log(this.props.posts, '@@@@@@tsting')
+     const {display} = this.state;       
             // (tsta.length > 0) ? console.log( tsta[inx].title, '@@@@@@tsta') : console.log('here')
     return(
-               <div className="nav" >
+               <div className="nav" ><table><tbody>
           <tr ><td style={ { width: '100%' } }><span style={ { fontWeight: 'bold' } }>Top Stories</span> { nam && `(${ nam[0] })` }</td></tr>
+          </tbody></table>
          
           { tsta && tsta.map( (it,i) =>
-          { 
-          
-            return (
-              
-             <div className={display === '' ? 'NavContainer' : 'non'} id={i} onClick = {this.handleClick.bind(this, i)}>
+            {          
+            return (             
+             <div key={i} className={display === '' ? 'NavContainer' : 'non'} id={i} onClick = {this.handleClick.bind(this, i)}>
              {/* <div className='NavContainer' id={i} onClick = {this.handleClick.bind(this, i)}> */}
                 <div className="NavLeft" >
                   { it.multimedia.filter( img => img.length > 1 ) ? <img className='smallPic' src={ it.multimedia.length > 0 ? it.multimedia[ 0 ].url : 'https://www.sjpl.org/sites/default/files/images/1718/nyt.png' } alt='pics' /> : <p>No Image..</p> }
@@ -57,13 +52,11 @@ class InnerContent extends Component{
                   <h1 className='se'>{ it.abstract }</h1>
                   <p>{ it.title }</p> <a target="_parent" href={ it.url }>Read More..</a>
                   <p>{ it.des_facet.map( chk => `#${ chk }  ` ) }</p>
-                 
-                  {/* <FilterLink filter='/Tsting'>Completed</FilterLink> */}
                 </div>
               </div> 
             )
           } ) }
-          <Tsting inx={inx} auth={auth} timing={timing} title={title} imgs={imgs}/>
+          <AnotherView inx={inx} auth={auth} timing={timing} title={title} imgs={imgs}/>
            </div>
     )
  }

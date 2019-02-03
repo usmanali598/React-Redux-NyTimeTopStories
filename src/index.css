@@ -78,7 +78,7 @@ width: 140px;
     /* left: 254px; */
     /* top: -755px; */
  }
- .view2 > tr{
+ tbody > .viewRow{
        display: flex;
     justify-content: space-between;
  }
