@@ -18,7 +18,7 @@ state = {
     }
     backNRefresh = ()=>{
         window.history.back();
-        setTimeout(()=>window.location.reload(), 800);
+        setTimeout(()=>window.location.reload(), 500);
     }
 
 render(){

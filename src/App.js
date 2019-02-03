@@ -69,7 +69,7 @@ class App extends Component
  
           </tbody>
         </table>
-      <Link to="/tst" style={{ textDecoration: 'none', color:'black' }}>
+      <Link to="/AnotherView" style={{ textDecoration: 'none', color:'black' }}>
         <InnerContent tsta={tsta} nam={nam} posts={posts}/>
       </Link> 
          </div>

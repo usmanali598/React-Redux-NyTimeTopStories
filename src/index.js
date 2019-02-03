@@ -27,7 +27,7 @@ ReactDOM.render( <Provider store={ store }>
      <Container />
       {/* <Route exact path="/" component={Container} /> */}
       {/* <Route path="/tst" component={AnotherView} /> */}
-      <Route path="/tst" exact render={props => <AnotherView {...props }/>} />
+      <Route path="/AnotherView" exact render={props => <AnotherView {...props }/>} />
       </div>
     </Router>
 </Provider>, document.getElementById( 'root' ) );

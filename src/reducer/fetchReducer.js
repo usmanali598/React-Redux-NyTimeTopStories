@@ -32,7 +32,6 @@ export function fetchPostsWithRedux()
     }
 }
 
-
 export function fetchReducer( state = { posts: [] }, action )
 {
     switch ( action.type )
