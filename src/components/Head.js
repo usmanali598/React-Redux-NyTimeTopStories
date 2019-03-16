@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-
-const Head = ()=>{
+const Head = () =>
+{
     return (
- <div className="head" >  </div>
+        <div className="head" >  </div>
     )
 }
 

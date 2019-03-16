@@ -2,7 +2,8 @@ import
 {
     fetchRequest,
     fetchSuccess,
-    fetchError
+    fetchError,
+    TARGET
 } from './../action/fetchAction';
 
 export function getPosts( api )
@@ -45,3 +46,14 @@ export function fetchReducer( state = { posts: [] }, action )
     }
 }
 
+export function targetRe( state = 'LOADIN...', { type, payload } )
+{
+    switch ( type )
+    {
+        case TARGET:
+            // console.log( payload.user, 'payload her' )
+            return payload.user;
+        default:
+            return state;
+    }
+}

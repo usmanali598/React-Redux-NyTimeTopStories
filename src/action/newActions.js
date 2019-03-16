@@ -33,3 +33,26 @@ export function showAnotherView()
         display: 'block'
     }
 }
+
+export function trying( usr )
+{
+    return {
+        type: 'TRYING',
+        text: usr
+    }
+}
+
+export function testing( tst )
+{
+    return {
+        type: 'TESTING',
+        text: tst
+    }
+}
+
+export function unTesting()
+{
+    return {
+        type: 'UNTESTING'
+    }
+}

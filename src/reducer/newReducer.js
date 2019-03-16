@@ -26,3 +26,26 @@ export function anotherViewReducer( state = '', action )
             return state;
     }
 }
+export function tryingReducer( state = {}, action )
+{
+    switch ( action.type )
+    {
+        case 'TRYING':
+            return { ...state, a: action.text }
+        default:
+            return state;
+    }
+}
+
+export function testingReducer( state = {}, action )
+{
+    switch ( action.type )
+    {
+        case 'TESTING':
+            return { ...state, a: action.text }
+        case 'UNTESTING':
+            return { ...state, a: '' }
+        default:
+            return state;
+    }
+}
