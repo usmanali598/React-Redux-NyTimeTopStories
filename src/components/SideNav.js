@@ -5,6 +5,7 @@ import { Link, NavLink } from 'react-router-dom';
 import '../index.scss';
 import { hidingMain, showMain, hidingAnotherView, showAnotherView, trying, unTesting } from '../action/newActions';
 import { connect } from 'react-redux';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 class SideNav extends Component
@@ -36,7 +37,7 @@ class SideNav extends Component
         <table className='table table-hover list' style={ { width: '20%' } } onClick={ this.handleClik }>
           <tbody>
             <tr><td className="sideRows"> Sections..</td></tr>
-            { ts.map( ( name, i ) => <tr key={ i } ><td className="sides" onClick={ this.props.targ } >{ name }</td></tr> ) }
+            { ts.map( ( name, i ) => <tr key={ i } className="glyphicon glyphicon-triangle-right" ><td className="sides" onClick={ this.props.targ } >{ name }</td></tr> ) }
           </tbody>
         </table>
         <div className="rit">

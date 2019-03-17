@@ -14,13 +14,6 @@ class AnotherView extends Component
         timing: '',
         imgs: ''
     }
-    backNRefresh = () =>
-    {
-        // console.log( this.props.history )
-        // this.props.history.push( '/' )
-        window.history.back();
-        setTimeout( () => window.location.reload(), 500 );
-    }
 
     render()
     {
@@ -31,20 +24,22 @@ class AnotherView extends Component
         let gettingTitle = pasta.length > 0 && gettingIndex !== '' ? pasta[ gettingIndex ].title : '';
         let gettingAuthName = pasta.length > 0 && gettingIndex !== '' ? pasta[ gettingIndex ].byline : console.log( 'auth is not showing' );
         let gettingTiming = pasta.length > 0 && gettingIndex !== '' ? pasta[ gettingIndex ].created_date : console.log( 'created_date is not showing' );
-        let gettingImage = pasta.length > 0 && gettingIndex !== '' ? pasta[ gettingIndex ].multimedia[ 0 ].url : console.log( 'ima es not showing' );
-
-        console.log( gettingImage, 'pasta here' )
+        // let gettingImage = pasta.length > 0 && gettingIndex !== '' ? 'https://www.sjpl.org/sites/default/files/images/1718/nyt.png'  : console.log( 'ima es not showing' );
+        let gettingImage = pasta.length > 0 && gettingIndex !== '' ? (pasta[ gettingIndex ].multimedia.length > 0 ? pasta[ gettingIndex ].multimedia[ 0 ].url : 'https://www.sjpl.org/sites/default/files/images/1718/nyt.png' ) : console.log( 'ima es not showing' );
+        let fettingImage = pasta.length > 0 && gettingIndex !== '' ? pasta[ gettingIndex ] : console.log( 'ima es not showing' );
+        // let gettingImage = pasta.length > 0 && gettingIndex !== '' ? pasta[ gettingIndex ].multimedia[ 0 ].url : console.log( 'ima es not showing' );
+        console.log( fettingImage, 'pasta here' )
         const style = { display: this.props.anotherViewReducer, borderBottom: '1px solid black' }
         return (
             <>
                 <table className='view2' style={ style }>
                     <tbody>
-                        <tr className='viewRow' onClick={ () => { this.backNRefresh() } }>
+                        <tr className='viewRow' >
                             <td className='tk'>{ gettingTitle }</td>
                             <td className='tk'>{ gettingAuthName }</td>
                             <td className='tk'>{ gettingTiming }</td>
                         </tr>
-                        <tr><td className='tk'>{ gettingImage && <img src={ gettingImage } alt='try' /> }</td></tr>
+                        <tr><td className='tk'>{ gettingImage && <img src={ gettingImage } alt='image' style={{width:'75px', height:'75px'}}  /> }</td></tr>
                     </tbody>
                 </table>
             </>
