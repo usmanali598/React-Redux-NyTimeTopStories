@@ -12,13 +12,10 @@ class SideNav extends Component
 {
   componentDidMount()
   {
-    // this.props.onHidingMain()
     this.props.onHidingAnotherView()
-
   }
   handleClik = ( e ) =>
   {
-    // this.props.onShowAnotherView()
     this.props.onShowMain()
     this.props.onTrying( e.target.innerHTML )
     this.props.onUnTesting()
@@ -31,13 +28,13 @@ class SideNav extends Component
     const ts = partOne.filter( ( item, pos, self ) => self.indexOf( item ) == pos )
     let { a } = this.props.tryingReducer
     let tsta = posts && posts.map( lt => lt ).filter( appu => appu.section === a );
-
+    // console.log(this.props.targ)
     return (
       <>
-        <table className='table table-hover list' style={ { width: '20%' } } onClick={ this.handleClik }>
+        <table className='table table-hover glyphicon-hover list' style={ { width: '20%' } } onClick={ this.handleClik }>
           <tbody>
             <tr><td className="sideRows"> Sections..</td></tr>
-            { ts.map( ( name, i ) => <tr key={ i } className="glyphicon glyphicon-triangle-right" ><td className="sides" onClick={ this.props.targ } >{ name }</td></tr> ) }
+            { ts.map( ( name, i ) => <tr key={ i } ><td className="sides" >{ name }</td></tr> ) }
           </tbody>
         </table>
         <div className="rit">
@@ -55,17 +52,12 @@ class SideNav extends Component
 const mapStateToProps = ( state ) =>
 {
   return {
-    navReducer: state.navReducer,
-    anotherViewReducer: state.anotherViewReducer,
     tryingReducer: state.tryingReducer,
-    testingReducer: state.testingReducer
   }
 };
 
 const mapActionsToProps = {
-  onShowAnotherView: showAnotherView,
   onHidingAnotherView: hidingAnotherView,
-  onHidingMain: hidingMain,
   onShowMain: showMain,
   onTrying: trying,
   onUnTesting: unTesting
