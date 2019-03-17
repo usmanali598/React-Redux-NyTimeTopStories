@@ -33,7 +33,7 @@ body {
 width: 20%;
 min-width: 20%;
 min-height: 800px; 
-border: 1px solid black;
+// border: 1px solid black;
  display: flex; 
 flex-direction: column; }
 
@@ -42,13 +42,13 @@ tr{
    display: grid;
 }
 .sideRows{
-  border: 1px solid black; 
+  // border: 1px solid black; 
   text-align: left;
    padding-left: 8px; 
    font-weight: bold;
 }
 .sides{
-   border: 1px solid black; 
+  //  border: 1px solid black; 
   text-align: left;
    padding-left: 8px; 
    height: 40px;
@@ -126,8 +126,19 @@ width: 140px;
   background:#00BEA2;
 }
  @media screen and (max-width: 500px) {
-  .list .nav{   
+  // .list .nav{   
+  .list{   
     // flex-direction: column;
     width: 100%;
+    min-height: 0;
+  }
+  .content{
+    flex-direction: column
+  }
+  .NavContainer{
+    flex-direction: column
+  }
+  .rit{
+    width:100%;
   }
 }
