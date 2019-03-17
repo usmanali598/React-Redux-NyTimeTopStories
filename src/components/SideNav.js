@@ -29,8 +29,6 @@ class SideNav extends Component
     let { a } = this.props.tryingReducer
     let tsta = posts && posts.map( lt => lt ).filter( appu => appu.section === a );
     let cssResponsiveFix = window.innerWidth <= '500' ? '100%' : '20%'
-    let cssArrow = ''
-    // console.log(this.props.targ)
     return (
       <>
         <table className='table table-hover glyphicon-hover list' style={ { width: cssResponsiveFix } } >
