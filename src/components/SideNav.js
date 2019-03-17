@@ -29,13 +29,14 @@ class SideNav extends Component
     let { a } = this.props.tryingReducer
     let tsta = posts && posts.map( lt => lt ).filter( appu => appu.section === a );
     let cssResponsiveFix = window.innerWidth <= '500' ? '100%' : '20%'
+    let cssArrow = ''
     // console.log(this.props.targ)
     return (
       <>
         <table className='table table-hover glyphicon-hover list' style={ { width: cssResponsiveFix } } >
           <tbody>
             <tr><td className="sideRows" > Sections..</td></tr>
-            { ts.map( ( name, i ) => <tr key={ i } ><td className="sides" onClick={ this.handleClik }>{ name }</td></tr> ) }
+            { ts.map( ( name, i ) => <tr key={ i } ><td className="sides iconTesting" onClick={ this.handleClik }>{ name }</td></tr> ) }
           </tbody>
         </table>
         <div className="rit">

@@ -9,6 +9,12 @@ body {
 * {
   box-sizing: border-box;
 }
+
+// .iconTesting{
+//   background: url('https://img.icons8.com/nolan/20/000000/sort-right.png');
+//   background-repeat: no-repeat;
+//   background-position: right; 
+// }
  
  .content{
    display: flex;
@@ -57,8 +63,10 @@ tr{
 } 
 .sides:hover{
   background:#004152;
-  // color:#00BEA2;
-  color:white;
+  color:#00BEA2;
+  background: url('https://img.icons8.com/material-rounded/20/000000/sort-right.png');
+  background-repeat: no-repeat;
+  background-position: right; 
 }
 .nav{
   width: 100%;
@@ -75,8 +83,10 @@ tr{
 }
 .NavContainer:hover{
 
-background: rgb(34,148,195);
-background: linear-gradient(0deg, rgba(34,148,195,1) 0%, rgba(196,196,196,1) 100%);
+// background: rgb(34,148,195);
+// background: linear-gradient(0deg, rgba(34,148,195,1) 0%, rgba(196,196,196,1) 100%);
+background: #70d467;
+background: linear-gradient(90deg,#70d467 0,#6fbbfa);
 
  }
 .NavLeft{
@@ -123,7 +133,7 @@ width: 140px;
 
 .rit{
   width:80%;
-  background:#00BEA2;
+  // background:#00BEA2;
 }
  @media screen and (max-width: 500px) {
   // .list .nav{   
