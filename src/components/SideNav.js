@@ -1,44 +1,44 @@
 import React, { Component } from 'react';
 import InnerContent from './InnerContent';
-import AnotherView from './AnotherView';
+import StoryDetails from './StoryDetails';
 import '../index.scss';
-import { showMain, hidingAnotherView, trying, unTesting } from '../action/newActions';
+import { showMain, hidingStoriesView, sectionSelecting, unSelectingStory } from '../action/storiesActions';
 import { connect } from 'react-redux';
 import 'bootstrap/dist/css/bootstrap.min.css';
 class SideNav extends Component
 {
   componentDidMount()
   {
-    this.props.onHidingAnotherView()
+    this.props.onHidingStoriesView()
   }
   handleClik = ( e ) =>
   {
     this.props.onShowMain()
-    this.props.onTrying( e.target.innerHTML )
-    this.props.onUnTesting()
-    this.props.onHidingAnotherView()
+    this.props.onSectionSelecting( e.target.innerHTML )
+    this.props.onUnSelectingStory()
+    this.props.onHidingStoriesView()
   }
   render()
   {
     const { posts } = this.props;
-    const partOne = this.props.posts.map( ( post, i ) => post.section )
-    const ts = partOne.filter( ( item, pos, self ) => self.indexOf( item ) === pos )
-    let { a } = this.props.tryingReducer
+    const mapSections = this.props.posts.map( post => post.section )
+    const filterMapSections = mapSections.filter( ( item, pos, self ) => self.indexOf( item ) === pos )
+    let { selectedSection } = this.props.sectionSelectingReducer
     let cssResponsiveFix = window.innerWidth <= '500' ? '100%' : '20%'
     return (
       <>
         <table className='table table-hover glyphicon-hover list' style={ { width: cssResponsiveFix } } >
           <tbody>
             <tr><td className="sideRows" > Sections..</td></tr>
-            { ts.map( ( name, i ) => <tr key={ i } ><td className="sides iconTesting" onClick={ this.handleClik }>{ name }</td></tr> ) }
+            { filterMapSections.map( ( name, i ) => <tr key={ i } ><td className="sides iconTesting" onClick={ this.handleClik }>{ name }</td></tr> ) }
           </tbody>
         </table>
         <div className="rit">
           <table style={ { width: '100%', borderBottom: '1px solid black', borderWidth: '100%' } } ><tbody>
-            <tr ><td><span style={ { fontWeight: 'bold' } }>Top Stories</span>( { a ? a : '-' } )</td></tr>
+            <tr ><td><span style={ { fontWeight: 'bold' } }>Top Stories</span>( { selectedSection ? selectedSection : '-' } )</td></tr>
           </tbody></table>
           <InnerContent posts={ posts } />
-          <AnotherView posts={ posts } />
+          <StoryDetails posts={ posts } />
         </div>
       </>
     )
@@ -48,15 +48,15 @@ class SideNav extends Component
 const mapStateToProps = ( state ) =>
 {
   return {
-    tryingReducer: state.tryingReducer,
+    sectionSelectingReducer: state.sectionSelectingReducer,
   }
 };
 
 const mapActionsToProps = {
-  onHidingAnotherView: hidingAnotherView,
+  onHidingStoriesView: hidingStoriesView,
   onShowMain: showMain,
-  onTrying: trying,
-  onUnTesting: unTesting
+  onSectionSelecting: sectionSelecting,
+  onUnSelectingStory: unSelectingStory
 };
 
 export default connect( mapStateToProps, mapActionsToProps )( SideNav );

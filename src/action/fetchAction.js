@@ -14,14 +14,3 @@ export function fetchError()
 {
     return { type: "FETCH_ERROR" }
 }
-
-export const TARGET = 'usersUpdateUser';
-export function updateUser( newUser )
-{
-    return {
-        type: TARGET,
-        payload: {
-            user: newUser
-        }
-    }
-}

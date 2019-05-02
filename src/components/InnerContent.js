@@ -3,31 +3,27 @@ import '../index.scss';
 import { connect } from 'react-redux';
 import
 {
-  hidingMain, showAnotherView, testing
-} from '../action/newActions';
+  hidingMain, showStoriesView, selectingStory
+} from '../action/storiesActions';
 class InnerContent extends Component
 {
-  componentDidMount()
-  {
-    console.log( this.props, 'inner content' )
-  }
   handleClick = index =>
   {
-    this.props.onTesting( index )
+    this.props.onSelectingStory( index )
     this.props.onHidingMain()
-    this.props.onShowAnotherView()
+    this.props.onShowStoriesView()
   }
   render()
   {
     const { posts } = this.props;
-    let topicName = this.props.tryingReducer.a
-    let asta = posts && posts.map( lt => lt ).filter( apu => apu.section === topicName );
+    let topicName = this.props.sectionSelectingReducer.selectedSection
+    let selectedSection = posts && posts.map( lt => lt ).filter( apu => apu.section === topicName );
     const style = {
       display: this.props.navReducer
     }
     return (
       <div className="nav" style={ style } >
-        { asta && asta.map( ( it, i ) =>
+        { selectedSection && selectedSection.map( ( it, i ) =>
         {
           return (
             // <div key={ i } className={ display === '' ? 'NavContainer' : 'non' } id={ i } onClick={ this.handleClick.bind( this, i ) }>
@@ -54,14 +50,14 @@ const mapStateToProps = ( state, props ) =>
 {
   return {
     navReducer: state.navReducer,
-    tryingReducer: state.tryingReducer
+    sectionSelectingReducer: state.sectionSelectingReducer
   }
 };
 
 const mapActionsToProps = {
-  onShowAnotherView: showAnotherView,
+  onShowStoriesView: showStoriesView,
   onHidingMain: hidingMain,
-  onTesting: testing,
+  onSelectingStory: selectingStory,
 };
 
 export default connect( mapStateToProps, mapActionsToProps )( InnerContent );

@@ -7,24 +7,24 @@ import { createStore, applyMiddleware, combineReducers } from 'redux';
 import { Provider, connect } from 'react-redux';
 import thunkMiddleware from 'redux-thunk';
 import { fetchReducer, fetchPostsWithRedux } from './reducer/fetchReducer';
-import { navReducer, anotherViewReducer, tryingReducer, testingReducer } from './reducer/newReducer';
+import { navReducer, storiesDisplayReducer, sectionSelectingReducer, selectingStoryReducer } from './reducer/storiesReducer';
 import logger from 'redux-logger';
 
 export function mapStateToProps( state )
 {
     return {
         posts: state.fetchReducer.posts,
-        anotherViewReducer: state.anotherViewReducer,
+        storiesDisplayReducer: state.storiesDisplayReducer,
         navReducer: state.navReducer,
     }
 }
 
 const reducer = combineReducers( {
     navReducer: navReducer,
-    anotherViewReducer: anotherViewReducer,
+    storiesDisplayReducer: storiesDisplayReducer,
     fetchReducer: fetchReducer,
-    tryingReducer: tryingReducer,
-    testingReducer: testingReducer
+    sectionSelectingReducer: sectionSelectingReducer,
+    selectingStoryReducer: selectingStoryReducer
 } )
 
 let Container = connect( mapStateToProps, { fetchPostsWithRedux } )( App );

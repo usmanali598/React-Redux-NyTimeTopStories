@@ -7,7 +7,6 @@ class App extends Component
   componentDidMount()
   {
     this.props.fetchPostsWithRedux();
-    // this.props.onShowAnotherView()
   }
 
   render()

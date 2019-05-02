@@ -2,8 +2,7 @@ import
 {
     fetchRequest,
     fetchSuccess,
-    fetchError,
-    TARGET
+    fetchError
 } from './../action/fetchAction';
 
 export function getPosts( api )
@@ -22,7 +21,6 @@ export function fetchPostsWithRedux()
         {
             if ( response.status === 200 )
             {
-                // console.log( json, 'json here' )
                 dispatch( fetchSuccess( json.results.map( child => child ) ) )
             }
             else
@@ -46,14 +44,4 @@ export function fetchReducer( state = { posts: [] }, action )
     }
 }
 
-export function targetRe( state = 'LOADIN...', { type, payload } )
-{
-    switch ( type )
-    {
-        case TARGET:
-            // console.log( payload.user, 'payload her' )
-            return payload.user;
-        default:
-            return state;
-    }
-}
+
