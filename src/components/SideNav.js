@@ -1,13 +1,10 @@
 import React, { Component } from 'react';
 import InnerContent from './InnerContent';
 import AnotherView from './AnotherView';
-import { Link, NavLink } from 'react-router-dom';
 import '../index.scss';
-import { hidingMain, showMain, hidingAnotherView, showAnotherView, trying, unTesting } from '../action/newActions';
+import { showMain, hidingAnotherView, trying, unTesting } from '../action/newActions';
 import { connect } from 'react-redux';
 import 'bootstrap/dist/css/bootstrap.min.css';
-
-
 class SideNav extends Component
 {
   componentDidMount()
@@ -25,9 +22,8 @@ class SideNav extends Component
   {
     const { posts } = this.props;
     const partOne = this.props.posts.map( ( post, i ) => post.section )
-    const ts = partOne.filter( ( item, pos, self ) => self.indexOf( item ) == pos )
+    const ts = partOne.filter( ( item, pos, self ) => self.indexOf( item ) === pos )
     let { a } = this.props.tryingReducer
-    let tsta = posts && posts.map( lt => lt ).filter( appu => appu.section === a );
     let cssResponsiveFix = window.innerWidth <= '500' ? '100%' : '20%'
     return (
       <>

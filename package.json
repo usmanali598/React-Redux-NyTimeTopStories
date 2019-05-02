@@ -1,5 +1,5 @@
 {
-  "name": "reduxfetchredditapi",
+  "name": "reduxnewyorkapi",
   "version": "0.1.0",
   "dependencies": {
     "bootstrap": "^4.3.0",
@@ -28,6 +28,7 @@
     "not op_mini all"
   ],
   "devDependencies": {
+    "gh-pages": "^2.0.1",
     "node-sass": "^4.11.0"
   }
 }

@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
-import AnotherView from './AnotherView';
 import '../index.scss';
 import { connect } from 'react-redux';
 import
 {
-  hidingMain, showMain,
-  hidingAnotherView, showAnotherView, trying, testing
+  hidingMain, showAnotherView, testing
 } from '../action/newActions';
 class InnerContent extends Component
 {

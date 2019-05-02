@@ -9,7 +9,6 @@ import thunkMiddleware from 'redux-thunk';
 import { fetchReducer, fetchPostsWithRedux } from './reducer/fetchReducer';
 import { navReducer, anotherViewReducer, tryingReducer, testingReducer } from './reducer/newReducer';
 import logger from 'redux-logger';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 
 export function mapStateToProps( state )
 {
